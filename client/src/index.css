@@ -31,67 +31,49 @@ body {
   color: var(--text-primary);
 }
 
-/* ─── Mobile layout: centered narrow column ─── */
 #root {
   width: 100%;
   min-height: 100vh;
-  background: var(--page-bg);
-  position: relative;
 }
 
-/* Mobile app shell — max 430px centered */
+/* Mobile: centered narrow shell */
 .app-shell {
   max-width: 430px;
   margin: 0 auto;
   min-height: 100vh;
   position: relative;
+  background: var(--page-bg);
 }
 
-/* ─── Desktop layout: sidebar + content ─── */
+/* Desktop: full width with sidebar */
 @media (min-width: 768px) {
-  body {
-    background: #EEF2F0;
-  }
-
-  #root {
-    display: flex;
-    min-height: 100vh;
-  }
-
+  body { background: var(--page-bg); }
+  
   .app-shell {
     max-width: none;
     margin: 0;
-    flex: 1;
     display: flex;
     min-height: 100vh;
+    width: 100%;
   }
 
   .desktop-sidebar {
-    width: var(--sidebar-width);
-    background: white;
-    border-right: 1px solid var(--border);
     display: flex !important;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    z-index: 100;
-    box-shadow: 2px 0 12px rgba(13,31,26,0.04);
-  }
-
-  .desktop-main {
-    margin-left: var(--sidebar-width);
-    flex: 1;
-    max-width: 900px;
-    padding: 32px;
-    min-height: 100vh;
   }
 }
 
-/* Hide desktop sidebar on mobile */
 .desktop-sidebar {
   display: none;
+  width: var(--sidebar-width);
+  background: white;
+  border-right: 1px solid var(--border);
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100;
+  box-shadow: 2px 0 16px rgba(13,31,26,0.05);
 }
 
 /* ─── Cards ─── */
@@ -105,10 +87,7 @@ body {
 }
 
 @media (min-width: 768px) {
-  .card {
-    border-radius: 20px;
-    padding: 20px;
-  }
+  .card { border-radius: 18px; padding: 20px; }
 }
 
 /* ─── Inputs ─── */
@@ -123,11 +102,7 @@ body {
   transition: all 0.2s;
   outline: none;
 }
-
-.input:focus {
-  border-color: var(--brand);
-  background: #fff;
-}
+.input:focus { border-color: var(--brand); background: #fff; }
 
 /* ─── Buttons ─── */
 .btn-primary {
@@ -141,16 +116,10 @@ body {
   width: 100%;
   box-shadow: 0 4px 16px rgba(29,158,117,0.25);
   cursor: pointer;
-  transition: transform 0.1s, background 0.2s;
+  transition: background 0.2s, transform 0.1s;
 }
-
-.btn-primary:hover {
-  background: var(--brand-dark);
-}
-
-.btn-primary:active {
-  transform: scale(0.98);
-}
+.btn-primary:hover { background: var(--brand-dark); }
+.btn-primary:active { transform: scale(0.98); }
 
 .btn-ghost {
   background: transparent;
@@ -163,10 +132,7 @@ body {
   cursor: pointer;
   transition: background 0.2s;
 }
-
-.btn-ghost:hover {
-  background: var(--brand-light);
-}
+.btn-ghost:hover { background: var(--brand-light); }
 
 /* ─── Badges ─── */
 .badge {
@@ -176,7 +142,6 @@ body {
   font-weight: 600;
   display: inline-block;
 }
-
 .badge-paid    { background: #E8F7F2; color: #0F6E56; }
 .badge-pending { background: #FEF3E2; color: #9A5C0A; }
 .badge-overdue { background: #FEF0F0; color: #A32D2D; }
@@ -186,43 +151,14 @@ body {
 .hero-card {
   background: linear-gradient(135deg, #0F6E56, #1D9E75);
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
   color: white;
-}
-
-@media (min-width: 768px) {
-  .hero-card {
-    border-radius: 24px;
-    padding: 28px;
-  }
-}
-
-/* ─── Desktop grid helpers ─── */
-@media (min-width: 768px) {
-  .desktop-grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .desktop-grid-3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
 }
 
 /* ─── Print ─── */
 @media print {
-  .bottom-nav,
-  .desktop-sidebar,
-  .top-bar,
-  .action-buttons,
-  .announcement-banner {
+  .bottom-nav-bar, .desktop-sidebar, .top-bar, .action-buttons, .announcement-banner {
     display: none !important;
   }
-  .invoice-print-area {
-    display: block;
-    width: 100%;
-  }
+  .invoice-print-area { display: block; width: 100%; }
 }

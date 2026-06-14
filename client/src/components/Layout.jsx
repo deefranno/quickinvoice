@@ -17,32 +17,27 @@ const Layout = () => {
   return (
     <>
       <style>{`
-        /* Mobile: full-width single column with bottom nav clearance */
         .layout-main {
           padding: 0;
           padding-bottom: 80px;
           min-height: 100vh;
+          width: 100%;
         }
-        /* Desktop: shifted right of sidebar, no bottom nav clearance */
         @media (min-width: 768px) {
           .layout-main {
             margin-left: 240px;
             padding-bottom: 0;
+            width: calc(100% - 240px);
             max-width: none;
           }
         }
       `}</style>
 
       <div className="app-shell">
-        {/* Desktop sidebar — CSS hides it on mobile */}
         <DesktopSidebar />
-
-        {/* Page content */}
         <main className="layout-main">
           <Outlet />
         </main>
-
-        {/* Mobile bottom nav — CSS hides it on desktop */}
         <BottomNav />
       </div>
     </>
