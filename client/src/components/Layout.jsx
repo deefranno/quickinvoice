@@ -28,7 +28,7 @@ const Layout = () => {
           .layout-main {
             margin-left: 240px;
             padding-bottom: 0;
-            max-width: 860px;
+            max-width: none;
           }
         }
       `}</style>
