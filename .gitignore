@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build output
+client/dist/
+
+# Environment
+.env
+server/.env
+
+# Database (never commit SQLite files)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Logs
+*.log
+server/server.log
+client/client.log
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+{
+  "ignore": [
+    "node_modules/*",
+    "client/*",
+    "*.sqlite",
+    "*.db"
+  ],
+  "watch": ["server"],
+  "ext": "js,json",
+  "delay": "1000"
+}

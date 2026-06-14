@@ -1,0 +1,228 @@
+:root {
+  --brand: #1D9E75;
+  --brand-dark: #0F6E56;
+  --brand-light: #E8F7F2;
+  --brand-mid: #5DCAA5;
+  --page-bg: #F7F9F8;
+  --card-bg: #FFFFFF;
+  --text-primary: #0D1F1A;
+  --text-secondary: #6B7F7A;
+  --text-hint: #A8B8B4;
+  --danger: #D84040;
+  --danger-light: #FEF0F0;
+  --warning: #C47C1A;
+  --warning-light: #FEF3E2;
+  --border: #E4EDEA;
+  --shadow: 0 2px 12px rgba(13,31,26,0.06);
+  --font: 'Plus Jakarta Sans', sans-serif;
+  --sidebar-width: 240px;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  background: var(--page-bg);
+  color: var(--text-primary);
+}
+
+/* ─── Mobile layout: centered narrow column ─── */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--page-bg);
+  position: relative;
+}
+
+/* Mobile app shell — max 430px centered */
+.app-shell {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ─── Desktop layout: sidebar + content ─── */
+@media (min-width: 768px) {
+  body {
+    background: #EEF2F0;
+  }
+
+  #root {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .app-shell {
+    max-width: none;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .desktop-sidebar {
+    width: var(--sidebar-width);
+    background: white;
+    border-right: 1px solid var(--border);
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 100;
+    box-shadow: 2px 0 12px rgba(13,31,26,0.04);
+  }
+
+  .desktop-main {
+    margin-left: var(--sidebar-width);
+    flex: 1;
+    max-width: 900px;
+    padding: 32px;
+    min-height: 100vh;
+  }
+}
+
+/* Hide desktop sidebar on mobile */
+.desktop-sidebar {
+  display: none;
+}
+
+/* ─── Cards ─── */
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+  .card {
+    border-radius: 20px;
+    padding: 20px;
+  }
+}
+
+/* ─── Inputs ─── */
+.input {
+  background: #F2F7F5;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  padding: 13px 14px;
+  font-size: 15px;
+  font-family: var(--font);
+  width: 100%;
+  transition: all 0.2s;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--brand);
+  background: #fff;
+}
+
+/* ─── Buttons ─── */
+.btn-primary {
+  background: var(--brand);
+  border: none;
+  border-radius: 14px;
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  width: 100%;
+  box-shadow: 0 4px 16px rgba(29,158,117,0.25);
+  cursor: pointer;
+  transition: transform 0.1s, background 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--brand-dark);
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 15px;
+  font-size: 15px;
+  color: var(--text-primary);
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-ghost:hover {
+  background: var(--brand-light);
+}
+
+/* ─── Badges ─── */
+.badge {
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-paid    { background: #E8F7F2; color: #0F6E56; }
+.badge-pending { background: #FEF3E2; color: #9A5C0A; }
+.badge-overdue { background: #FEF0F0; color: #A32D2D; }
+.badge-draft   { background: #F2F7F5; color: #6B7F7A; }
+
+/* ─── Hero card ─── */
+.hero-card {
+  background: linear-gradient(135deg, #0F6E56, #1D9E75);
+  border-radius: 20px;
+  padding: 20px;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .hero-card {
+    border-radius: 24px;
+    padding: 28px;
+  }
+}
+
+/* ─── Desktop grid helpers ─── */
+@media (min-width: 768px) {
+  .desktop-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .desktop-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+/* ─── Print ─── */
+@media print {
+  .bottom-nav,
+  .desktop-sidebar,
+  .top-bar,
+  .action-buttons,
+  .announcement-banner {
+    display: none !important;
+  }
+  .invoice-print-area {
+    display: block;
+    width: 100%;
+  }
+}
